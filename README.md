@@ -12,3 +12,9 @@
 Их замена точно так же реализована через инспектор(для удобства)
 
 Если ваша логика не требует ожидания окончания выполнения списка задач, то вы можете просто не подписываться на Event. Но при попытке еще раз запустить список задач, до его окончания работы ух... а вы отчаянный... удачи вам УХУ
+
+Для работы нужны плагины
+
+Unity_Plugin-General_Public - https://github.com/ximik-xim/Unity_Plugin-TList_Public
+
+Unity_Plugin-TList_Public - https://github.com/ximik-xim/Unity_Plugin-General_Public
