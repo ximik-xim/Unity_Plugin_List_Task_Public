@@ -7,7 +7,7 @@ using UnityEngine;
 /// Наследники будут выполнять какую то задачу, по окончанию которой вызовут event
 /// Так же, наследники должны сами инициализироваться (желательно в Awake)
 /// </summary>
-public abstract class AbsTileLogicAbsTaskDKO : MonoBehaviour
+public abstract class TL_AbsTaskLogicDKO : MonoBehaviour
 {
     public abstract event Action OnInit;
     public abstract bool IsInit { get; }

@@ -9,26 +9,34 @@ using UnityEngine.Serialization;
 /// </summary>
 public class TL_ExampleSelectUseReplicationTask : MonoBehaviour
 {
-    [SerializeField]
-    private bool _startLogicTaskReadyExecutor;
-    
-    [SerializeField]
-    private bool _startLogicTaskExecutorSequence;
-
     [SerializeField] 
     private TL_TaskReplicationWrapperMono _replicationTaskReadyExecutor;
 
     [SerializeField] 
     private TL_TaskReplicationWrapperMono _replicationTaskExecutorSequence;
-    
-    private void OnValidate()
+
+    void OnGUI()
     {
-        if (_startLogicTaskReadyExecutor == true)
+        var buttonStyle = new GUIStyle(GUI.skin.button);
+        buttonStyle.fontSize = 50;
+        buttonStyle.normal.textColor = Color.white;
+        buttonStyle.alignment = TextAnchor.MiddleCenter;
+
+        int width = 0;
+        int height = 0;
+        int x = Screen.width;
+        int y = Screen.height / 2;
+
+
+        if (GUI.Button(new Rect(width, height, x, y), "По мере готовности", buttonStyle) == true)
         {
             _replicationTaskReadyExecutor.StartAction();
         }
-        
-        if (_startLogicTaskExecutorSequence == true)
+
+        height = y;
+        y = (Screen.height - height);
+
+        if (GUI.Button(new Rect(width, height, x, y), "По очереди готовности", buttonStyle) == true)
         {
             _replicationTaskExecutorSequence.StartAction();
         }

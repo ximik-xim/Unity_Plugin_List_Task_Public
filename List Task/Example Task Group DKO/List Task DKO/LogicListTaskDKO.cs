@@ -26,7 +26,7 @@ public class LogicListTaskDKO : MonoBehaviour
     /// (любых, и в любом виде, главное что бы можно было узнать, выполнена ли она или нет, и вызвать выполнение)
     /// </summary>
     [SerializeField]
-    private List<AbsTileLogicAbsTaskDKO> _listTask;
+    private List<TL_AbsTaskLogicDKO> _listTask;
     
     public event Action OnCompleted
     {
@@ -62,7 +62,7 @@ public class LogicListTaskDKO : MonoBehaviour
     /// </summary>
     private void StartInit()
     {
-        List<AbsTileLogicAbsTaskDKO> _buffer = new List<AbsTileLogicAbsTaskDKO>();
+        List<TL_AbsTaskLogicDKO> _buffer = new List<TL_AbsTaskLogicDKO>();
         bool _isStart = false;
         
         StartLogic();

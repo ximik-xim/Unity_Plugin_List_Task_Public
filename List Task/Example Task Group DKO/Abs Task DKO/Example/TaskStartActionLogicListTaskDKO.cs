@@ -7,7 +7,7 @@ using UnityEngine;
 /// Нужна для запуска другой задачи из текущей
 /// НЕ ЖДЕТ ПОКА ПРИЙДЕТ CALL BACK об завершении Task
 /// </summary>
-public class TaskStartActionLogicListTaskDKO : AbsTileLogicAbsTaskDKO
+public class TaskStartActionLogicListTaskDKO : TL_AbsTaskLogicDKO
 {
     public override event Action OnInit;
     public override bool IsInit => true;

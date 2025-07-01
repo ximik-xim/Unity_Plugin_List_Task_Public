@@ -3,15 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
-
+/// <summary>
+/// примр исп. разных списков задач(С оберткой Mono) с немного разной логикой выполнени 
+/// </summary>
 public class ExampleStorageTaskExecutorWrapper : MonoBehaviour
 {
-    [SerializeField] 
-    private bool _init;
-
-    [SerializeField]
-    private bool _startLogic;
-    
+    /// <summary>
+    /// Тут выбираем обертку
+    /// </summary>
     [SerializeField] 
     private TL_TaskWrapperMono _wrapperTaskExecutor;
     
@@ -19,6 +18,29 @@ public class ExampleStorageTaskExecutorWrapper : MonoBehaviour
     {
         _wrapperTaskExecutor.OnInit += OnInitTask;
         _wrapperTaskExecutor.OnCompleted += OnCompletedTask;
+    }
+    
+    void OnGUI()
+    {
+        var buttonStyle = new GUIStyle(GUI.skin.button);
+        buttonStyle.fontSize = 40;
+        buttonStyle.normal.textColor = Color.white;
+        buttonStyle.alignment = TextAnchor.MiddleCenter;
+
+        int width = 0;
+        int height = Screen.height / 2;
+        int x = Screen.width;
+        int y = Screen.height / 3;
+
+
+        if (GUI.Button(new Rect(width, height, x, y), "Запуск списка(обертка Mono) задач", buttonStyle) == true)
+        {
+            if (_wrapperTaskExecutor.IsCompleted == true)
+            {
+                _wrapperTaskExecutor.StartAction();
+                Debug.Log("Запуск задач. Ждите");
+            }
+        }
     }
 
     private void OnCompletedTask()
@@ -30,25 +52,7 @@ public class ExampleStorageTaskExecutorWrapper : MonoBehaviour
     {
         Debug.Log("Инициализация тасок прошла успешно");
     }
-
-    private void OnValidate()
-    {
-        if (_init == true)
-        {
-            if (_wrapperTaskExecutor.IsInit == false)
-            {
-                _wrapperTaskExecutor.StartInit();
-            }
-        }
-        
-        if (_startLogic == true)
-        {
-            if (_wrapperTaskExecutor.IsCompleted == true)
-            {
-                _wrapperTaskExecutor.StartAction();
-            }
-        }
-    }
+    
 
     private void OnDestroy()
     {

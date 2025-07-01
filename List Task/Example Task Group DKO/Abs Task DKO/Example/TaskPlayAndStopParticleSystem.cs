@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaskPlayAndStopParticleSystem : AbsTileLogicAbsTaskDKO
+public class TaskPlayAndStopParticleSystem : TL_AbsTaskLogicDKO
 {
     public override event Action OnInit;
     public override bool IsInit => true;
