@@ -57,3 +57,7 @@ List Task -> Logic Storage Task Wrapper -> Example Scene -> Example
 Unity_Plugin-General_Public - https://github.com/ximik-xim/Unity_Plugin-TList_Public
 
 Unity_Plugin-TList_Public - https://github.com/ximik-xim/Unity_Plugin-General_Public
+
+---------------------------------------------------------------------------------------------------------
+
+Ну и так же нужно восстановить ключи TList из бэкапов. Для этого нажимаем на папку List Task кнопкой ПКМ и заходим в пункт TList -> К папке -> Стереть и восстановить все данные
