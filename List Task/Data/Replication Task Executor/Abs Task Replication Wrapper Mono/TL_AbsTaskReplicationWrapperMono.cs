@@ -43,4 +43,8 @@ public abstract class TL_AbsTaskReplicationWrapperMono : MonoBehaviour
     /// </summary>
     public abstract void ActionCompleted();
 
+    /// <summary>
+    /// Прекратит выполнение задач
+    /// </summary>
+    public abstract void Break(bool invokeEvent = false);
 }

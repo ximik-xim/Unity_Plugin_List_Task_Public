@@ -86,14 +86,25 @@ public class TL_ReplicationTaskReadyExecutor
     /// </summary>
     public void ActionCompleted()
     {
-        if (_isStart == false)
+        if (_isStart == false && _isCompleted == false)
         {
             int targetCount = _listAction.Count;
             for (int i = 0; i < targetCount; i++)
             {
-                //делаю запрос закончила ли выполнение задача, если да, то удаляю id из списка
-                if (OnCheckCompleted.Invoke(_listAction[i]) == true)
+                //Нужен, т.к есть метод Break, который может очистить список задач в любой момент
+                if (_isCompleted == true)
                 {
+                    break;
+                }
+                
+                //делаю запрос закончила ли выполнение задача, если да, то удаляю id из списка
+                if (OnCheckCompleted.Invoke(_listAction[i]) == true && _isCompleted == false)   
+                {
+                    //Нужен, т.к есть метод Break, который может очистить список задач в любой момент
+                    if (_isCompleted == true)
+                    {
+                        break;
+                    }
 #if UNITY_EDITOR
 
                     if (_debugLog == true)
@@ -121,6 +132,21 @@ public class TL_ReplicationTaskReadyExecutor
         {
             _isCompleted = true;
             OnCompleted?.Invoke();    
+        }
+    }
+    
+    /// <summary>
+    /// Прекратит выполнение задач
+    /// </summary>
+    public void Break(bool invokeEvent = false)
+    {
+        _listAction.Clear();
+
+        _isCompleted = true;
+
+        if (invokeEvent == true)
+        {
+            OnCompleted?.Invoke();
         }
     }
     

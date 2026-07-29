@@ -100,4 +100,11 @@ public class TL_TaskReplicationWrapperReadyExecutor : TL_AbsTaskReplicationWrapp
         _replicationTaskReadyExecutor.ActionCompleted();
     }
     
+    /// <summary>
+    /// Прекратит выполнение задач
+    /// </summary>
+    public override void Break(bool invokeEvent = false)
+    {
+        _replicationTaskReadyExecutor.Break(invokeEvent);
+    }
 }

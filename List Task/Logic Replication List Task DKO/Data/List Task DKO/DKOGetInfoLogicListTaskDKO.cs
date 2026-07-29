@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DKOGetLogicListTaskDKO : DKOGetInfoT<LogicListTaskDKO>
+public class DKOGetInfoLogicListTaskDKO : DKOGetInfoT<LogicListTaskDKO>
 {
     private void Awake()
     {

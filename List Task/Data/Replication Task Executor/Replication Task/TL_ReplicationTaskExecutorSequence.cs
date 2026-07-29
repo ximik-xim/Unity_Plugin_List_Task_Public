@@ -117,7 +117,7 @@ public class TL_ReplicationTaskExecutorSequence
     /// </summary>
     public void ActionCompleted()
     {
-        if (OnCheckCompleted.Invoke(_listAction[_targetId]) == true)
+        if (OnCheckCompleted.Invoke(_listAction[_targetId]) == true && _isCompleted == false)
         {
 #if UNITY_EDITOR
 
@@ -141,5 +141,20 @@ public class TL_ReplicationTaskExecutorSequence
             OnCompleted?.Invoke();    
         }
     }
-    
+
+    /// <summary>
+    /// Прекратит выполнение задач
+    /// </summary>
+    public void Break(bool invokeEvent = false)
+    {
+        _listAction.Clear();
+
+        _isCompleted = true;
+
+        if (invokeEvent == true)
+        {
+            OnCompleted?.Invoke();
+        }
+    }
+
 }
